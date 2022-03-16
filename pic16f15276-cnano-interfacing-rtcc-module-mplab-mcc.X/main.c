@@ -61,7 +61,7 @@ int main(void)
     
     rtc6_Initialize();
     
-    RD6_SetInterruptHandler(Rtcc_External_Interrupt);
+    RB2_SetInterruptHandler(Rtcc_External_Interrupt);
     
     while(1)
     {

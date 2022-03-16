@@ -74,7 +74,7 @@ static i2c_host_event_states_t I2C1_EVENT_RESET(void);
 /*
   Section: Driver Interface
  */
-const i2c_host_interface_t SPI1 = {
+const i2c_host_interface_t I2C1_Host = {
     .Initialize = I2C1_Initialize,
     .Deinitialize = I2C1_Deinitialize,
     .Write = I2C1_Write,

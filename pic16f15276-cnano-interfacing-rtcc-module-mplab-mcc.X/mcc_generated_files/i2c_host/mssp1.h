@@ -47,25 +47,25 @@
 /**
  Section: Data Type Definitions
  */
-#define spi1_host_interface SPI1
+#define i2c1_host_host_interface I2C1_Host
 
 
-#define SPI1_Initialize I2C1_Initialize
-#define SPI1_Deinitialize I2C1_Deinitialize
-#define SPI1_Write I2C1_Write
-#define SPI1_Read I2C1_Read
-#define SPI1_WriteRead I2C1_WriteRead
-#define SPI1_ErrorGet I2C1_ErrorGet
-#define SPI1_CallbackRegister I2C1_CallbackRegister
-#define SPI1_IsBusy I2C1_IsBusy
+#define I2C1_Host_Initialize I2C1_Initialize
+#define I2C1_Host_Deinitialize I2C1_Deinitialize
+#define I2C1_Host_Write I2C1_Write
+#define I2C1_Host_Read I2C1_Read
+#define I2C1_Host_WriteRead I2C1_WriteRead
+#define I2C1_Host_ErrorGet I2C1_ErrorGet
+#define I2C1_Host_CallbackRegister I2C1_CallbackRegister
+#define I2C1_Host_IsBusy I2C1_IsBusy
 
-#define SPI1_Tasks I2C1_Tasks
+#define I2C1_Host_Tasks I2C1_Tasks
 
 /**
  * @ingroup i2c_host
- * @brief External object for SPI1.
+ * @brief External object for I2C1_Host.
  */
-extern const i2c_host_interface_t SPI1;
+extern const i2c_host_interface_t I2C1_Host;
 
 /**
  * @ingroup i2c_host

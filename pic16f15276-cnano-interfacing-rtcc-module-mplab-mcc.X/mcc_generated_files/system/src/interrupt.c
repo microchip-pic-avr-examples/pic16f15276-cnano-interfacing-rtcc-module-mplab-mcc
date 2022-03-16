@@ -49,45 +49,6 @@ void  INTERRUPT_Initialize (void)
 
 }
 
-/**
- * @ingroup interrupt
- * @brief This routine services the ISRs of enabled interrupts and is called everytime an interrupt is triggered.
- * @pre Interrupt Manager is initialized.
- * @param void
- * @return void
- */
-void __interrupt() INTERRUPT_InterruptManager (void)
-{
-    // GPIO pin interrupt on Change(IOC)
-    if(PIE0bits.IOCIE == 1 && PIR0bits.IOCIF == 1)
-    {
-        PIN_MANAGER_IOC();
-    }
-    // interrupt handler
-    if(PIE0bits.IOCIE == 1 && PIR0bits.IOCIF == 1)
-    {
-        PIN_MANAGER_IOC();
-    }
-    else if(INTCONbits.PEIE == 1)
-    {
-        if(PIE1bits.RC1IE == 1 && PIR1bits.RC1IF == 1)
-        {
-            EUSART1_RxInterruptHandler();
-        } 
-        else if(PIE1bits.TX1IE == 1 && PIR1bits.TX1IF == 1)
-        {
-            EUSART1_TxInterruptHandler();
-        } 
-        else
-        {
-            //Unhandled Interrupt
-        }
-    }      
-    else
-    {
-        //Unhandled Interrupt
-    }
-}
 
 void INT_ISR(void)
 {

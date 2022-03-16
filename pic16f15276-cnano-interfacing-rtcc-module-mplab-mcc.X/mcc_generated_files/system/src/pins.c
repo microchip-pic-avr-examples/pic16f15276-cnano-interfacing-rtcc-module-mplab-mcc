@@ -34,7 +34,7 @@
 
 #include "../pins.h"
 
-void (*RD6_InterruptHandler)(void);
+void (*RB2_InterruptHandler)(void);
 
 void PIN_MANAGER_Initialize(void)
 {
@@ -43,7 +43,7 @@ void PIN_MANAGER_Initialize(void)
     */
     LATA = 0x0;
     LATB = 0x0;
-    LATC = 0x0;
+    LATC = 0x18;
     LATD = 0x0;
     LATE = 0x0;
 
@@ -60,9 +60,9 @@ void PIN_MANAGER_Initialize(void)
     ANSELx registers
     */
     ANSELA = 0xFF;
-    ANSELB = 0xFC;
+    ANSELB = 0xF8;
     ANSELC = 0xE7;
-    ANSELD = 0xBF;
+    ANSELD = 0xFF;
     ANSELE = 0x3;
 
     /**
@@ -70,8 +70,8 @@ void PIN_MANAGER_Initialize(void)
     */
     WPUA = 0x0;
     WPUB = 0x0;
-    WPUC = 0x18;
-    WPUD = 0x40;
+    WPUC = 0x0;
+    WPUD = 0x0;
     WPUE = 0x0;
   
 
@@ -121,60 +121,59 @@ void PIN_MANAGER_Initialize(void)
     IOCAP = 0x0;
     IOCAN = 0x0;
     IOCAF = 0x0;
-    IOCBP = 0x0;
+    IOCBP = 0x4;
     IOCBN = 0x0;
     IOCBF = 0x0;
     IOCCP = 0x0;
     IOCCN = 0x0;
     IOCCF = 0x0;
-    IOCDP = 0x40;
-    IOCDN = 0x0;
-    IOCDF = 0x0;
     IOCEP = 0x0;
     IOCEN = 0x0;
     IOCEF = 0x0;
 
-    RD6_SetInterruptHandler(RD6_DefaultInterruptHandler);
+    RB2_SetInterruptHandler(RB2_DefaultInterruptHandler);
 
+    // Enable PIE0bits.IOCIE interrupt 
+    PIE0bits.IOCIE = 1; 
 }
   
 void PIN_MANAGER_IOC(void)
 {
-    // interrupt on change for pin RD6}
-    if(IOCDFbits.IOCDF6 == 1)
+    // interrupt on change for pin RB2}
+    if(IOCBFbits.IOCBF2 == 1)
     {
-        RD6_ISR();  
+        RB2_ISR();  
     }
 }
    
 /**
-   RD6 Interrupt Service Routine
+   RB2 Interrupt Service Routine
 */
-void RD6_ISR(void) {
+void RB2_ISR(void) {
 
-    // Add custom IOCDF6 code
+    // Add custom IOCBF2 code
 
     // Call the interrupt handler for the callback registered at runtime
-    if(RD6_InterruptHandler)
+    if(RB2_InterruptHandler)
     {
-        RD6_InterruptHandler();
+        RB2_InterruptHandler();
     }
-    IOCDFbits.IOCDF6 = 0;
+    IOCBFbits.IOCBF2 = 0;
 }
 
 /**
-  Allows selecting an interrupt handler for IOCDF6 at application runtime
+  Allows selecting an interrupt handler for IOCBF2 at application runtime
 */
-void RD6_SetInterruptHandler(void (* InterruptHandler)(void)){
-    RD6_InterruptHandler = InterruptHandler;
+void RB2_SetInterruptHandler(void (* InterruptHandler)(void)){
+    RB2_InterruptHandler = InterruptHandler;
 }
 
 /**
-  Default interrupt handler for IOCDF6
+  Default interrupt handler for IOCBF2
 */
-void RD6_DefaultInterruptHandler(void){
-    // add your RD6 interrupt custom code
-    // or set custom function using RD6_SetInterruptHandler()
+void RB2_DefaultInterruptHandler(void){
+    // add your RB2 interrupt custom code
+    // or set custom function using RB2_SetInterruptHandler()
 }
 /**
  End of File

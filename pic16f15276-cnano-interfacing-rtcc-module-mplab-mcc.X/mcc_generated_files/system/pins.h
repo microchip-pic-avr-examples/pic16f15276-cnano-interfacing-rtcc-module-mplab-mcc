@@ -89,6 +89,26 @@
 #define IO_RB1_SetAnalogMode()      do { ANSELBbits.ANSB1 = 1; } while(0)
 #define IO_RB1_SetDigitalMode()     do { ANSELBbits.ANSB1 = 0; } while(0)
 
+// get/set IO_RB2 aliases
+#define IO_RB2_TRIS                 TRISBbits.TRISB2
+#define IO_RB2_LAT                  LATBbits.LATB2
+#define IO_RB2_PORT                 PORTBbits.RB2
+#define IO_RB2_WPU                  WPUBbits.WPUB2
+#define IO_RB2_OD                   ODCONBbits.ODCB2
+#define IO_RB2_ANS                  ANSELBbits.ANSB2
+#define IO_RB2_SetHigh()            do { LATBbits.LATB2 = 1; } while(0)
+#define IO_RB2_SetLow()             do { LATBbits.LATB2 = 0; } while(0)
+#define IO_RB2_Toggle()             do { LATBbits.LATB2 = ~LATBbits.LATB2; } while(0)
+#define IO_RB2_GetValue()           PORTBbits.RB2
+#define IO_RB2_SetDigitalInput()    do { TRISBbits.TRISB2 = 1; } while(0)
+#define IO_RB2_SetDigitalOutput()   do { TRISBbits.TRISB2 = 0; } while(0)
+#define IO_RB2_SetPullup()          do { WPUBbits.WPUB2 = 1; } while(0)
+#define IO_RB2_ResetPullup()        do { WPUBbits.WPUB2 = 0; } while(0)
+#define IO_RB2_SetPushPull()        do { ODCONBbits.ODCB2 = 0; } while(0)
+#define IO_RB2_SetOpenDrain()       do { ODCONBbits.ODCB2 = 1; } while(0)
+#define IO_RB2_SetAnalogMode()      do { ANSELBbits.ANSB2 = 1; } while(0)
+#define IO_RB2_SetDigitalMode()     do { ANSELBbits.ANSB2 = 0; } while(0)
+
 // get/set IO_RC3 aliases
 #define IO_RC3_TRIS                 TRISCbits.TRISC3
 #define IO_RC3_LAT                  LATCbits.LATC3
@@ -129,26 +149,6 @@
 #define IO_RC4_SetAnalogMode()      do { ANSELCbits.ANSC4 = 1; } while(0)
 #define IO_RC4_SetDigitalMode()     do { ANSELCbits.ANSC4 = 0; } while(0)
 
-// get/set IO_RD6 aliases
-#define IO_RD6_TRIS                 TRISDbits.TRISD6
-#define IO_RD6_LAT                  LATDbits.LATD6
-#define IO_RD6_PORT                 PORTDbits.RD6
-#define IO_RD6_WPU                  WPUDbits.WPUD6
-#define IO_RD6_OD                   ODCONDbits.ODCD6
-#define IO_RD6_ANS                  ANSELDbits.ANSD6
-#define IO_RD6_SetHigh()            do { LATDbits.LATD6 = 1; } while(0)
-#define IO_RD6_SetLow()             do { LATDbits.LATD6 = 0; } while(0)
-#define IO_RD6_Toggle()             do { LATDbits.LATD6 = ~LATDbits.LATD6; } while(0)
-#define IO_RD6_GetValue()           PORTDbits.RD6
-#define IO_RD6_SetDigitalInput()    do { TRISDbits.TRISD6 = 1; } while(0)
-#define IO_RD6_SetDigitalOutput()   do { TRISDbits.TRISD6 = 0; } while(0)
-#define IO_RD6_SetPullup()          do { WPUDbits.WPUD6 = 1; } while(0)
-#define IO_RD6_ResetPullup()        do { WPUDbits.WPUD6 = 0; } while(0)
-#define IO_RD6_SetPushPull()        do { ODCONDbits.ODCD6 = 0; } while(0)
-#define IO_RD6_SetOpenDrain()       do { ODCONDbits.ODCD6 = 1; } while(0)
-#define IO_RD6_SetAnalogMode()      do { ANSELDbits.ANSD6 = 1; } while(0)
-#define IO_RD6_SetDigitalMode()     do { ANSELDbits.ANSD6 = 0; } while(0)
-
 // get/set IO_RE2 aliases
 #define LED_TRIS                 TRISEbits.TRISE2
 #define LED_LAT                  LATEbits.LATE2
@@ -187,43 +187,43 @@ void PIN_MANAGER_IOC(void);
 
 /**
  * @ingroup  pinsdriver
- * @brief Interrupt on Change Handler for the RD6 pin functionality
+ * @brief Interrupt on Change Handler for the RB2 pin functionality
  * @param none
  * @return none
  */
-void RD6_ISR(void);
+void RB2_ISR(void);
 
 /**
  * @ingroup  pinsdriver
- * @brief Interrupt Handler Setter for RD6 pin interrupt-on-change functionality.
- *        Allows selecting an interrupt handler for RD6 at application runtime.
+ * @brief Interrupt Handler Setter for RB2 pin interrupt-on-change functionality.
+ *        Allows selecting an interrupt handler for RB2 at application runtime.
  * @pre Pins intializer called
  * @param InterruptHandler function pointer.
  * @return none
  */
-void RD6_SetInterruptHandler(void (* InterruptHandler)(void));
+void RB2_SetInterruptHandler(void (* InterruptHandler)(void));
 
 /**
  * @ingroup  pinsdriver
- * @brief Dynamic Interrupt Handler for RD6 pin.
- *        This is a dynamic interrupt handler to be used together with the RD6_SetInterruptHandler() method.
- *        This handler is called every time the RD6 ISR is executed and allows any function to be registered at runtime.
+ * @brief Dynamic Interrupt Handler for RB2 pin.
+ *        This is a dynamic interrupt handler to be used together with the RB2_SetInterruptHandler() method.
+ *        This handler is called every time the RB2 ISR is executed and allows any function to be registered at runtime.
  * @pre Pins intializer called
  * @param none
  * @return none
  */
-extern void (*RD6_InterruptHandler)(void);
+extern void (*RB2_InterruptHandler)(void);
 
 /**
  * @ingroup  pinsdriver
- * @brief Default Interrupt Handler for RD6 pin. 
- *        This is a predefined interrupt handler to be used together with the RD6_SetInterruptHandler() method.
- *        This handler is called every time the RD6 ISR is executed. 
+ * @brief Default Interrupt Handler for RB2 pin. 
+ *        This is a predefined interrupt handler to be used together with the RB2_SetInterruptHandler() method.
+ *        This handler is called every time the RB2 ISR is executed. 
  * @pre Pins intializer called
  * @param none
  * @return none
  */
-void RD6_DefaultInterruptHandler(void);
+void RB2_DefaultInterruptHandler(void);
 
 
 #endif // PINS_H

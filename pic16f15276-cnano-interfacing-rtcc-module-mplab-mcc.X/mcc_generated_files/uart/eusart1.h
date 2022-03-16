@@ -50,34 +50,34 @@
 #endif
 
 
-#define UART1_interface UART1
+#define EUSART1_interface EUSART1
 
 
-#define UART1_Initialize     EUSART1_Initialize
-#define UART1_Deinitialize   EUSART1_Deinitialize
-#define UART1_Write          EUSART1_Write
-#define UART1_Read           EUSART1_Read
-#define UART1__IsRxReady     EUSART1_IsRxReady
-#define UART1_IsTxReady      EUSART1_IsTxReady
-#define UART1_IsTxDone       EUSART1_IsTxDone
+#define EUSART1_Initialize     EUSART1_Initialize
+#define EUSART1_Deinitialize   EUSART1_Deinitialize
+#define EUSART1_Write          EUSART1_Write
+#define EUSART1_Read           EUSART1_Read
+#define EUSART1__IsRxReady     EUSART1_IsRxReady
+#define EUSART1_IsTxReady      EUSART1_IsTxReady
+#define EUSART1_IsTxDone       EUSART1_IsTxDone
 
-#define UART1_TransmitEnable       EUSART1_TransmitEnable
-#define UART1_TransmitDisable      EUSART1_TransmitDisable
-#define UART1_AutoBaudSet          (NULL)
-#define UART1_AutoBaudQuery        (NULL)
-#define UART1_BRGSet               (NULL)
-#define UART1_BRGGet               (NULL)
-#define UART1_BaudSet              (NULL)
-#define UART1_BaudGet              (NULL)
-#define UART1_ErrorGet             EUSART1_ErrorGet
+#define EUSART1_TransmitEnable       EUSART1_TransmitEnable
+#define EUSART1_TransmitDisable      EUSART1_TransmitDisable
+#define EUSART1_AutoBaudSet          (NULL)
+#define EUSART1_AutoBaudQuery        (NULL)
+#define EUSART1_BRGSet               (NULL)
+#define EUSART1_BRGGet               (NULL)
+#define EUSART1_BaudSet              (NULL)
+#define EUSART1_BaudGet              (NULL)
+#define EUSART1_ErrorGet             EUSART1_ErrorGet
 
-#define UART1_TxCompleteCallbackRegister     EUSART1_TxCompleteCallbackRegister
-#define UART1_RxCompleteCallbackRegister      EUSART1_RxCompleteCallbackRegister
-#define UART1_TxCollisionCallbackRegister  (NULL)
-#define UART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister
-#define UART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister
-#define UART1_ParityErrorCallbackRegister  (NULL)
-#define UART1_EventCallbackRegister        (NULL)
+#define EUSART1_TxCompleteCallbackRegister     (NULL)
+#define EUSART1_RxCompleteCallbackRegister      (NULL)
+#define EUSART1_TxCollisionCallbackRegister  (NULL)
+#define EUSART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister
+#define EUSART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister
+#define EUSART1_ParityErrorCallbackRegister  (NULL)
+#define EUSART1_EventCallbackRegister        (NULL)
 
 
 /**
@@ -105,7 +105,7 @@ typedef union {
  * @ingroup eusart1
  * @brief External object for eusart1_interface.
  */
-extern const uart_drv_interface_t UART1;
+extern const uart_drv_interface_t EUSART1;
 
 /**
  * @ingroup eusart1
@@ -177,37 +177,6 @@ inline void EUSART1_ReceiveEnable(void);
  */
 inline void EUSART1_ReceiveDisable(void);
 
-/**
- * @ingroup eusart1
- * @brief This API enables the EUSART1 transmitter interrupt.
- * @param None.
- * @return None.
- */
-void EUSART1_TransmitInterruptEnable(void);
-
-/**
- * @ingroup eusart1
- * @brief This API disables the EUSART1 transmitter interrupt.
- * @param None.
- * @return None.
- */
-void EUSART1_TransmitInterruptDisable(void);
-
-/**
- * @ingroup eusart1
- * @brief This API enables the EUSART1 receiver interrupt.
- * @param None.
- * @return None.
- */
-void EUSART1_ReceiveInterruptEnable(void);
-
-/**
- * @ingroup eusart1
- * @brief This API disables the EUSART1 receiver interrupt.
- * @param None.
- * @return None.
- */
-void EUSART1_ReceiveInterruptDisable(void);
 
 /**
  * @ingroup eusart1
@@ -295,39 +264,6 @@ void EUSART1_FramingErrorCallbackRegister(void (* callbackHandler)(void));
  * @return None.
  */
 void EUSART1_OverrunErrorCallbackRegister(void (* callbackHandler)(void));
-
-/**
- * @ingroup eusart1
- * @brief This is a pointer to the function that will be called upon transmit interrupt.
- * @pre Initialize the EUSART1 module with transmit interrupt enabled
- * @param None.
- * @return None.
- */
-void (*EUSART1_TxInterruptHandler)(void);
-
-/**
- * @ingroup eusart1
- * @brief This API registers the function to be called upon Transmitter interrupt.
- * @param callbackHandler - a function pointer which will be called upon Transmitter interrupt condition.
- * @return None.
- */
-void EUSART1_TxCompleteCallbackRegister(void (* callbackHandler)(void));
-
-/**
- * @ingroup eusart1
- * @brief This is a pointer to the function that will be called upon receive interrupt.
- * @pre Initialize the EUSART1 module with receive interrupt enabled
- * @param None.
- * @return None.
- */
-void (*EUSART1_RxInterruptHandler)(void);
-/**
- * @ingroup eusart1
- * @brief This API registers the function to be called upon Receiver interrupt.
- * @param callbackHandler - a function pointer which will be called upon Receiver interrupt condition.
- * @return None.
- */
-void EUSART1_RxCompleteCallbackRegister(void (* callbackHandler)(void));
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

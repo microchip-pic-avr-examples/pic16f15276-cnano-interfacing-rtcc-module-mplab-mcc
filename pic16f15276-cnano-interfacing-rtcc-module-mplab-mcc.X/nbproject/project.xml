@@ -4,10 +4,7 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>pic16f15276-cnano-interfacing-rtcc-module-mplab-mcc</name>
-            <name>pic16f15276-rtcc-mplab-mcc</name>
-            <name>New_RTC_2</name>
-            <name>New_RTC</name>
-            <creation-uuid>3f0c4569-e122-4c6f-9302-620644fc61a5</creation-uuid>
+            <creation-uuid>cf158df8-1963-4af5-89f7-e0f31fb0a570</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>

@@ -13,14 +13,8 @@
  ***********************************************************
 */
 #include <xc.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <string.h>
 #include "application.h"
-#include "mcc_generated_files/system/system.h"
-#include "mcc_generated_files/i2c_host/mssp1.h"
 #include "time.h"
-#include "mcc_generated_files/uart/eusart1.h"
 
 // Internal RTCC and E2PROM Addresses
 #define EEADDR                      (0x64)                                     // EEPROM ADDRESS

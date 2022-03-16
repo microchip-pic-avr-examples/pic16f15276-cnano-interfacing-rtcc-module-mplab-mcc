@@ -8,22 +8,22 @@
                      displayName="MCC Generated Files"
                      projectFiles="true">
         <logicalFolder name="i2c_host" displayName="i2c_host" projectFiles="true">
-          <itemPath>mcc_generated_files/i2c_host/i2c_host_event_types.h</itemPath>
+          <itemPath>mcc_generated_files/i2c_host/i2c_host_interface.h</itemPath>
           <itemPath>mcc_generated_files/i2c_host/mssp1.h</itemPath>
           <itemPath>mcc_generated_files/i2c_host/i2c_host_types.h</itemPath>
-          <itemPath>mcc_generated_files/i2c_host/i2c_host_interface.h</itemPath>
+          <itemPath>mcc_generated_files/i2c_host/i2c_host_event_types.h</itemPath>
         </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
-          <itemPath>mcc_generated_files/system/clock.h</itemPath>
-          <itemPath>mcc_generated_files/system/config_bits.h</itemPath>
-          <itemPath>mcc_generated_files/system/system.h</itemPath>
-          <itemPath>mcc_generated_files/system/pins.h</itemPath>
           <itemPath>mcc_generated_files/system/interrupt.h</itemPath>
+          <itemPath>mcc_generated_files/system/pins.h</itemPath>
+          <itemPath>mcc_generated_files/system/config_bits.h</itemPath>
+          <itemPath>mcc_generated_files/system/clock.h</itemPath>
+          <itemPath>mcc_generated_files/system/system.h</itemPath>
         </logicalFolder>
         <logicalFolder name="uart" displayName="uart" projectFiles="true">
           <itemPath>mcc_generated_files/uart/eusart1.h</itemPath>
-          <itemPath>mcc_generated_files/uart/uart_types.h</itemPath>
           <itemPath>mcc_generated_files/uart/uart_drv_interface.h</itemPath>
+          <itemPath>mcc_generated_files/uart/uart_types.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>application.h</itemPath>
@@ -46,10 +46,10 @@
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
             <itemPath>mcc_generated_files/system/src/system.c</itemPath>
+            <itemPath>mcc_generated_files/system/src/interrupt.c</itemPath>
             <itemPath>mcc_generated_files/system/src/clock.c</itemPath>
             <itemPath>mcc_generated_files/system/src/config_bits.c</itemPath>
             <itemPath>mcc_generated_files/system/src/pins.c</itemPath>
-            <itemPath>mcc_generated_files/system/src/interrupt.c</itemPath>
           </logicalFolder>
         </logicalFolder>
         <logicalFolder name="uart" displayName="uart" projectFiles="true">
@@ -65,7 +65,7 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
-      <itemPath>New_RTC.mc3</itemPath>
+      <itemPath>pic16f15276-cnano-interfacing-rtcc-module-mplab-mcc.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -137,7 +137,7 @@
         <property key="optimization-stable-enable" value="false"/>
         <property key="preprocess-assembler" value="true"/>
         <property key="short-enums" value="true"/>
-        <property key="tentative-definitions" value=""/>
+        <property key="tentative-definitions" value="-fno-common"/>
         <property key="undefine-macros" value=""/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
@@ -191,11 +191,6 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
-      <Tool>
-        <property key="memories.programmemory.ranges" value="0-3fff"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Users/i62418/Desktop/pic16f15276-rtcc-mplab-mcc.X/debug/default/pic16f15276-rtcc-mplab-mcc_ptg"/>
-      </Tool>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
         <property key="stack-guidance" value="false"/>
@@ -215,11 +210,6 @@
         <property key="user-pack-device-support" value=""/>
         <property key="wpo-lto" value="false"/>
       </XC8-config-global>
-      <nEdbgTool>
-        <property key="memories.programmemory.ranges" value="0-3fff"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Users/i62418/Desktop/pic16f15276-rtcc-mplab-mcc.X/debug/default/pic16f15276-rtcc-mplab-mcc_ptg"/>
-      </nEdbgTool>
     </conf>
   </confs>
 </configurationDescriptor>

@@ -116,7 +116,7 @@ The following figure shows the system configuration setting in MCC tool.
 - SDA Hold Time: 100ns
 - Interrupt Driven: Enabled
 
-The curiosity Nano base for click boards mikroBUS slot 1 is used for RTC 6 click, I/O pins for the same are configured through pin manager section of MCC.
+The curiosity Nano base for click boards mikroBUS slot 2 is used for RTC 6 click, I/O pins for the same are configured through pin manager section of MCC.
 
 <p align="center">
   <img width=600 height=auto src="images/mssp_config.png">
@@ -159,7 +159,7 @@ MFP is an output pin used for the alarm and square wave output functions. It can
 
 ## Hardware setup
 
-The following figure consists of RTC 6 click, Curiosity Nano base for click boards and PIC16F15276 Curiosity Nano Evaluation Kit. The figure shows the detailed information about the hardware setup. The RTC 6 Click is interfaced with PIC16F15276 microcontroller using curiosity nano adapter slot 1.
+The following figure consists of RTC 6 click, Curiosity Nano base for click boards and PIC16F15276 Curiosity Nano Evaluation Kit. The figure shows the detailed information about the hardware setup. The RTC 6 Click is interfaced with PIC16F15276 microcontroller using curiosity nano adapter slot 2.
 
 <p align="center">
   <img width=600 height=auto src="images/setup.png">
