@@ -57,13 +57,13 @@ Terminal window shows the timestamp values set or read from RTC 6 Click in decim
 
 Microchip’s free IDE, compiler and graphical code generators are used throughout the application firmware development. Following are the tools used for this demo application:
 
-* MPLAB X IDE [v6.00.0](https://www.microchip.com/mplab/mplab-x-ide "MPLAB X IDE v5.45")
-* XC8 Compiler [v2.36.0](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.30")
-* MPLAB Code Configurator (MCC) [v5.0.3](https://www.microchip.com/mplab/mplab-code-configurator)
+* MPLAB X IDE [v6.00.0](https://www.microchip.com/mplab/mplab-x-ide)
+* XC8 Compiler [v2.36.0](https://www.microchip.com/mplab/compilers)
+* MPLAB Code Configurator (MCC) [v5.1.1](https://www.microchip.com/mplab/mplab-code-configurator)
 * UART MCC Melody driver 1.6.0
 * MCC Melody Core 2.1.9
 * I2C Host MCC Melody driver 1.0.2
-* Microchip PIC16F1xxxx Series Device Support [1.9.163 or newer](https://packs.download.microchip.com/)
+* Microchip PIC16F1xxxx Series Device Support [1.13.178 or newer](https://packs.download.microchip.com/)
 
 **Note: For running the demo, the installed tool versions should be same or later. This example is not tested with previous versions.**
 

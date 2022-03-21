@@ -4,8 +4,8 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.pic16f15276-cnano-interfacing-rtcc-module-mplab-mcc",
-        "version": " ",
-        "displayName": "",
+        "version": "1.0.0",
+        "displayName": "Interfacing RTCC Module to PIC16F15276 Microcontroller",
         "projectName": "pic16f15276-cnano-interfacing-rtcc-module-mplab-mcc",
         "shortDescription": "This example demonstrates the usage of the PIC microcontroller together with Microchip MCP79410 RTCC module for the alarm feature implementation Compatible PIC16F152xx family of MCUs are PIC16F15214 PIC16F15223 PIC16F15244 PIC16F15254 PIC16F15276",
         "ide": {
@@ -19,12 +19,12 @@
             }
         ],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "PIC16f1xxxx_DFP",
+            "semverRange": "^1.13.178"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC",
+            "semverRange": "^5.1.1"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -37,8 +37,16 @@
             }
         },
         "author": "Amey Panse",
-        "peripherals": [],
-        "keywords": [],
+        "peripherals": [
+			"EUSART",
+			"I2C"
+		],
+        "keywords": [
+			"RTCC",
+			"Alarm clock",
+			"Melody",
+			"Curiosity Nano"			
+		],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
