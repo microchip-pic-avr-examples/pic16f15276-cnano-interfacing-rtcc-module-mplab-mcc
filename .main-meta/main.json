@@ -10,7 +10,7 @@
         "shortDescription": "This example demonstrates the usage of the PIC microcontroller together with Microchip MCP79410 RTCC module for the alarm feature implementation Compatible PIC16F152xx family of MCUs are PIC16F15214 PIC16F15223 PIC16F15244 PIC16F15254 PIC16F15276",
         "ide": {
             "name": "MPLAB X",
-            "semverRange": ">=6.00.0"
+            "semverRange": ">=6.0.0"
         },
         "compiler": [
             {
