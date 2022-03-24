@@ -48,7 +48,7 @@ The RTC 6 Click from MikroElektronika is used for the maintaining the timestamp 
 
 <p align="center">
   <img width=600 height=auto src="images/rtc_click.png">
-  <br>Fig 2: RTC 6 Click<br>
+  <br>Figure 2: RTC 6 Click<br>
 </p>
 
 Terminal window shows the timestamp values set or read from RTC 6 Click in decimal and epoch clock format.
@@ -79,6 +79,39 @@ This example is comprised of a single firmware.
 
 The firmware uses EUSART peripheral for communication with user for receiving the timestamp. Upon detection of a valid timestamp, the microcontroller sends the timestamp command to the RTC sensor over I2C interface. Also, it allows the user to set an alarm time. If the alarm timestamp is provided, then the respective command is provided to the sensor over I2C. On matching the alarm timestamp the on-board LED turns on.
 
+## Hardware setup
+
+The following figure consists of RTC 6 click, Curiosity Nano base for click boards and PIC16F15276 Curiosity Nano Evaluation Kit. The figure shows the detailed information about the hardware setup. The RTC 6 Click is interfaced with PIC16F15276 microcontroller using curiosity nano adapter slot 2.
+
+<p align="center">
+  <img width=600 height=auto src="images/setup.png">
+  <br>Figure 3: Hardware Setup<br>
+</p>
+
+Real-Time Clock demonstration needs input in epochs format. Also, the output data is in epoch format on the terminal. The required hardware connections are shown in the preceding figure.
+
+In case of device addressing, the control byte is the first byte received following the Start condition from the host device. The control byte begins with a control code **'1101'** for SRAM/RTCC register read/write. The last bit of the control byte defines the operation to be performed, with **1** for read and **0** for write operation. The combination of the 4-bit control code and the three chip select(CS) bits will define the slave address as shown in the below figure.
+
+<p align="center">
+  <img width=600 height=auto src="images/control_reg.png">
+  <br>Figure 4: Control Byte Register<br>
+</p>
+
+## Operation
+
+- Assemble the hardware as shown in the Hardware Setup. Power up the Curiosity Nano device using micro-USB cable.
+- Download the firmware available from the GitHub page link.
+- Build the project using latest version of tools as mentioned in the Software Tools section and load the generated hexadecimal file in to the PIC16F15276 microcontroller.
+- After running the program, the initial display will ask for the functionality which user prefers to perform. Hence, the text/data that is displayed on the terminal is as shown in figure below.
+- If the read the current stamp functionality is selected, RTC 6 click will provide the time previously stored in the battery backed SRAM.
+- The functionality to set the time stamp, will allow the user to set the time of his choice. 
+- The RTC 6 click is designed to operate using a 32.768kHz crystal oscillator, which starts the clock counters and does provide the accurate time if read after setting the time previously.
+- For setting the alarm, the input array of characters must include epoch timestamp for the alarm to set.
+
+## Conclusion
+
+The Real-Time Clock with alarm feature can be executed with range of controller families that have less memory and do not support internal RTC feature. The RTC 6 Click supports a two alarm feature with inbuilt Microchip's MCP47910 device, which enables user to set timestamp along with 2 alarms. This code example demonstrates the usage of PIC16F15276 microcontroller together with Microchip’s MCP47910 RTCC module for the realization of real-time clock with alarm feature.
+
 ## Appendix
 
 MCC – MPLAB® Code Configurator is a graphical programming environment that generates seamless, easy to understand C code to give a head start to the project, saving the designer’s time to initialize and configure all the modules, and to go through the datasheets. Using an instructive interface, it enables and configures all peripherals and functions specific to the application requirements.
@@ -104,7 +137,7 @@ The following figure shows the system configuration setting in MCC tool.
 
 <p align="center">
   <img width=600 height=auto src="images/system_config.png">
-  <br>Fig 3: Clock Configuration<br>
+  <br>Figure 5: Clock Configuration<br>
 </p>
 
 ## MSSP Configuration
@@ -120,7 +153,7 @@ The curiosity Nano base for click boards mikroBUS slot 2 is used for RTC 6 click
 
 <p align="center">
   <img width=600 height=auto src="images/mssp_config.png">
-  <br>Fig 4: MSSP Configuration<br>
+  <br>Figure 6: MSSP Configuration<br>
 </p>
 
 ## EUSART Configuration
@@ -135,7 +168,7 @@ The EUSART peripheral is used by both host and client devices for the communicat
 
 <p align="center">
   <img width=600 height=auto src="images/eusart_config.png">
-  <br>Fig 5: EUSART Configuration<br>
+  <br>Figure 7: EUSART Configuration<br>
 </p>
 
 ## Data Visualizer Configuration
@@ -152,40 +185,7 @@ Pre-configured data streamer file is available with the firmware package. The be
 ## Pin Mapping
 <p align="center">
   <img width=600 height=auto src="images/pin_config.png">
-  <br>Fig 6: Pin Configuration<br>
+  <br>Figure 8: Pin Configuration<br>
 </p>
 
 MFP is an output pin used for the alarm and square wave output functions. It can also serve as a general purpose output pin by controlling the OUT bit in the CONTROL register of the RTC 6 click. This pin may be left floating if not used.
-
-## Hardware setup
-
-The following figure consists of RTC 6 click, Curiosity Nano base for click boards and PIC16F15276 Curiosity Nano Evaluation Kit. The figure shows the detailed information about the hardware setup. The RTC 6 Click is interfaced with PIC16F15276 microcontroller using curiosity nano adapter slot 2.
-
-<p align="center">
-  <img width=600 height=auto src="images/setup.png">
-  <br>Fig 7: Hardware Setup<br>
-</p>
-
-Real-Time Clock demonstration needs input in epochs format. Also, the output data is in epoch format on the terminal. The required hardware connections are shown in the preceding figure.
-
-In case of device addressing, the control byte is the first byte received following the Start condition from the host device. The control byte begins with a control code **'1101'** for SRAM/RTCC register read/write. The last bit of the control byte defines the operation to be performed, with **1** for read and **0** for write operation. The combination of the 4-bit control code and the three chip select(CS) bits will define the slave address as shown in the below figure.
-
-<p align="center">
-  <img width=600 height=auto src="images/control_reg.png">
-  <br>Fig 8: Control Byte Register<br>
-</p>
-
-## Operation
-
-- Assemble the hardware as shown in the Hardware Setup. Power up the Curiosity Nano device using micro-USB cable.
-- Download the firmware available from the GitHub page link.
-- Build the project using latest version of tools as mentioned in the Software Tools section and load the generated hexadecimal file in to the PIC16F15276 microcontroller.
-- After running the program, the initial display will ask for the functionality which user prefers to perform. Hence, the text/data that is displayed on the terminal is as shown in figure below.
-- If the read the current stamp functionality is selected, RTC 6 click will provide the time previously stored in the battery backed SRAM.
-- The functionality to set the time stamp, will allow the user to set the time of his choice. 
-- The RTC 6 click is designed to operate using a 32.768kHz crystal oscillator, which starts the clock counters and does provide the accurate time if read after setting the time previously.
-- For setting the alarm, the input array of characters must include epoch timestamp for the alarm to set.
-
-## Conclusion
-
-The Real-Time Clock with alarm feature can be executed with range of controller families that have less memory and do not support internal RTC feature. The RTC 6 Click supports a two alarm feature with inbuilt Microchip's MCP47910 device, which enables user to set timestamp along with 2 alarms. This code example demonstrates the usage of PIC16F15276 microcontroller together with Microchip’s MCP47910 RTCC module for the realization of real-time clock with alarm feature.
