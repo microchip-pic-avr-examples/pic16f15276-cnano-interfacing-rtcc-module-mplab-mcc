@@ -4,27 +4,27 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.pic16f15276-cnano-interfacing-rtcc-module-mplab-mcc",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "displayName": "Interfacing RTCC Module to PIC16F15276 Microcontroller",
         "projectName": "pic16f15276-cnano-interfacing-rtcc-module-mplab-mcc",
         "shortDescription": "This example demonstrates the usage of the PIC microcontroller together with Microchip MCP79410 RTCC module for the alarm feature implementation. Compatible PIC16F152xx family of MCUs are PIC16F15214, PIC16F15223, PIC16F15244, PIC16F15254, PIC16F15276",
         "ide": {
             "name": "MPLAB X",
-            "semverRange": ">=6.0.0"
+            "semverRange": ">=6.10.0"
         },
         "compiler": [
             {
                 "name": "XC8",
-                "semverRange": "^2.36.0"
+                "semverRange": "^2.41.0"
             }
         ],
         "dfp": {
             "name": "PIC16f1xxxx_DFP",
-            "semverRange": "^1.13.178"
+            "semverRange": "^1.19.363"
         },
         "configurator": {
             "name": "MCC",
-            "semverRange": "^5.1.1"
+            "semverRange": "^5.3.7"
         },
         "device": {
             "metaDataVersion": "1.0.0",

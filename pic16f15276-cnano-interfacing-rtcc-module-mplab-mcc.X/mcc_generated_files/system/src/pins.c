@@ -12,7 +12,7 @@
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -34,7 +34,7 @@
 
 #include "../pins.h"
 
-void (*RB2_InterruptHandler)(void);
+void (*IO_RB2_InterruptHandler)(void);
 
 void PIN_MANAGER_Initialize(void)
 {
@@ -45,7 +45,7 @@ void PIN_MANAGER_Initialize(void)
     LATB = 0x0;
     LATC = 0x18;
     LATD = 0x0;
-    LATE = 0x0;
+    LATE = 0x4;
 
     /**
     TRISx registers
@@ -69,16 +69,11 @@ void PIN_MANAGER_Initialize(void)
     WPUx registers
     */
     WPUA = 0x0;
-    WPUB = 0x0;
+    WPUB = 0x4;
     WPUC = 0x0;
     WPUD = 0x0;
     WPUE = 0x0;
   
-
-    /**
-    APFCONx registers
-    */
-
     /**
     ODx registers
     */
@@ -115,6 +110,10 @@ void PIN_MANAGER_Initialize(void)
     SSP1DATPPS = 0x14;  //RC4->MSSP1:SDA1;
     RC4PPS = 0x08;  //RC4->MSSP1:SDA1;
 
+    /**
+    APFCON registers
+    */
+
    /**
     IOCx registers 
     */
@@ -131,7 +130,7 @@ void PIN_MANAGER_Initialize(void)
     IOCEN = 0x0;
     IOCEF = 0x0;
 
-    RB2_SetInterruptHandler(RB2_DefaultInterruptHandler);
+    IO_RB2_SetInterruptHandler(IO_RB2_DefaultInterruptHandler);
 
     // Enable PIE0bits.IOCIE interrupt 
     PIE0bits.IOCIE = 1; 
@@ -139,24 +138,24 @@ void PIN_MANAGER_Initialize(void)
   
 void PIN_MANAGER_IOC(void)
 {
-    // interrupt on change for pin RB2}
+    // interrupt on change for pin IO_RB2}
     if(IOCBFbits.IOCBF2 == 1)
     {
-        RB2_ISR();  
+        IO_RB2_ISR();  
     }
 }
    
 /**
-   RB2 Interrupt Service Routine
+   IO_RB2 Interrupt Service Routine
 */
-void RB2_ISR(void) {
+void IO_RB2_ISR(void) {
 
     // Add custom IOCBF2 code
 
     // Call the interrupt handler for the callback registered at runtime
-    if(RB2_InterruptHandler)
+    if(IO_RB2_InterruptHandler)
     {
-        RB2_InterruptHandler();
+        IO_RB2_InterruptHandler();
     }
     IOCBFbits.IOCBF2 = 0;
 }
@@ -164,16 +163,16 @@ void RB2_ISR(void) {
 /**
   Allows selecting an interrupt handler for IOCBF2 at application runtime
 */
-void RB2_SetInterruptHandler(void (* InterruptHandler)(void)){
-    RB2_InterruptHandler = InterruptHandler;
+void IO_RB2_SetInterruptHandler(void (* InterruptHandler)(void)){
+    IO_RB2_InterruptHandler = InterruptHandler;
 }
 
 /**
   Default interrupt handler for IOCBF2
 */
-void RB2_DefaultInterruptHandler(void){
-    // add your RB2 interrupt custom code
-    // or set custom function using RB2_SetInterruptHandler()
+void IO_RB2_DefaultInterruptHandler(void){
+    // add your IO_RB2 interrupt custom code
+    // or set custom function using IO_RB2_SetInterruptHandler()
 }
 /**
  End of File

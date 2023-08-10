@@ -107,7 +107,7 @@ DateTime_t dateTime;
 unsigned int arrIndex = ZERO;
 unsigned char timeArray[ARRAYSIZE];
 unsigned char userInput;
-unsigned int setInterruptFlag = ZERO;
+uint8_t setInterruptFlag = 0;
 time_t usertimestamp;
 volatile time_t readtime;
 /*
@@ -213,8 +213,8 @@ time_t rtc6_GetTime(void)
     struct tm tm_t;
     memset(&tm_t, 0, sizeof (tm_t));
     
-    tm_t.tm_year = rtc6_GetComponent(RTCC_YEAR, 0xFF) + 100; // Result only has two digits, this assumes 20xx
-    tm_t.tm_mon = rtc6_GetComponent(RTCC_MONTH, 0x1F) - 1; // time.h expects January as zero, clock gives 1
+    tm_t.tm_year = rtc6_GetComponent(RTCC_YEAR, 0xFF) + 100;    // Result only has two digits, this assumes 20xx
+    tm_t.tm_mon = rtc6_GetComponent(RTCC_MONTH, 0x1F) - 1;      // time.h expects January as zero, clock gives 1
     tm_t.tm_mday = rtc6_GetComponent(RTCC_DATE, 0x3F);
     tm_t.tm_hour = rtc6_GetComponent(RTCC_HOUR, 0x3F);
     tm_t.tm_min = rtc6_GetComponent(RTCC_MINUTES, 0x7F);
@@ -259,8 +259,7 @@ void rtc6_ClearAlarm1(void)
 // Interrupt Function for alarm match condition
 void Rtcc_External_Interrupt(void)
 {
-    setInterruptFlag++;                                                      // To call up the clear register value function
-    LED_Toggle();                                                            // Visual indicator
+    setInterruptFlag = true;                                                      // To call up the clear register value function
 }
 
 // Main Application Code
@@ -269,6 +268,8 @@ void rtc_Application(void)
     if(EUSART1_IsRxReady()) 
     {        
         userInput=EUSART1_Read();
+        
+        
         switch(userInput)  
         {          
          case 'A':                                                          // Case-A defines the functionality for user to set the timestamp
@@ -277,6 +278,7 @@ void rtc_Application(void)
                 printf("\n\t\r Enter the timestamp \n");
                 printf("\n\t\r Format is in epochs (universal time ticks)\n");
 
+                while(!EUSART1_IsRxReady());
                 userInput = EUSART1_Read();
                 
                 if(arrIndex != TIMESTAMP_LENGTH)
@@ -284,6 +286,7 @@ void rtc_Application(void)
                     for (arrIndex=0;arrIndex<TIMESTAMP_LENGTH;arrIndex++) // Accepting epoch time from the data visualizer
                     {
                         timeArray[arrIndex] = userInput;                    // Adding up the characters received
+                        while(!EUSART1_IsRxReady());
                         userInput = EUSART1_Read();
                     }
                     usertimestamp = atoll(timeArray);
@@ -302,7 +305,9 @@ void rtc_Application(void)
                 rtc6_ClearAlarm0();
                 rtc6_EnableAlarms(ALM0_EN,ALM1_NO);
                 printf("\n\t\r Enter alarm time : \n");
-                printf("\n\t\r Format is in epochs (universal time ticks) \n");                
+                printf("\n\t\r Format is in epochs (universal time ticks) \n");
+
+                while(!EUSART1_IsRxReady());
                 userInput = EUSART1_Read();
                 
                 if(arrIndex != TIMESTAMP_LENGTH)
@@ -310,6 +315,7 @@ void rtc_Application(void)
                     for (arrIndex=0;arrIndex<TIMESTAMP_LENGTH;arrIndex++) // Accepting epoch time from the data visualizer
                     {
                         timeArray[arrIndex] = userInput;                     // Adding up the characters received
+                        while(!EUSART1_IsRxReady());
                         userInput = EUSART1_Read();
                     }
                     usertimestamp = atoll(timeArray);
@@ -328,7 +334,7 @@ void rtc_Application(void)
                 struct tm *read_tm_t;                                                      
                 readtime = rtc6_GetTime();                                   // Reads the timestamp at the current instant
                 read_tm_t = localtime(&readtime);
-                printf("\t\r Current time is : %04d-%02d-%02d %02d:%02d:%02d\n", read_tm_t->tm_year+1900, read_tm_t->tm_mon+1, read_tm_t->tm_mday, read_tm_t->tm_hour, read_tm_t->tm_min, read_tm_t->tm_sec);
+                printf("\t\r Current time is : %04d-%02d-%02d %02d:%02d:%02d\n", read_tm_t->tm_year+1900, read_tm_t->tm_mon+1, read_tm_t->tm_mday, read_tm_t->tm_hour+5, read_tm_t->tm_min+30, read_tm_t->tm_sec);
                 __delay_ms(HOLD_TIME);
                 break;
             }
@@ -340,13 +346,15 @@ void rtc_Application(void)
     }
     
     // Checks if the interrupt flag is set to 2 for alarm message and also to  clear the alarm registers
-    if(setInterruptFlag == 2)                                           
-    {
-        for(int i=0;i<3;i++)
-        {
-            printf("\n\t\r -------ALARM------- \n");                         // Display alarm message on terminal
-        }                                                 
-        rtc6_ClearAlarm0();                                                  // Clear Alarm Register
-        setInterruptFlag = 0;                                                // Reset Interrupt Flag
-    }
+    
+    // This loop Can be added to indicate Alarm Time has occurred
+//    if(setInterruptFlag == 2)                                           
+//    {
+//        setInterruptFlag = 0;                                                // Reset Interrupt Flag
+//        for(int i=0;i<3;i++)
+//        {
+//            printf("\n\t\r -------ALARM------- \n");                         // Display alarm message on terminal
+//        }                                                 
+//        rtc6_ClearAlarm0();                                                  // Clear Alarm Register
+//    }
 }

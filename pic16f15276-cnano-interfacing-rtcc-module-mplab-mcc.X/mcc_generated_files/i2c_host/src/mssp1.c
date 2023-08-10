@@ -7,11 +7,11 @@
  *
  * @brief This file contains the driver code for I2C1 module.
  *
- * @version I2C1 Driver Version 2.1.0
+ * @version I2C1 Driver Version 2.1.1
  */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -111,9 +111,9 @@ const i2c1eventHandler i2c1_eventTable[] = {
  */
 void I2C1_Initialize(void)
 {
-    /* CKE disabled; SMP Middle;  */
-    SSP1STAT = 0x0;
-    /* SSPM FOSC/4_SSPxADD_I2C; CKP disabled; SSPEN disabled;  */
+    /* CKE disabled; SMP Standard Speed;  */
+    SSP1STAT = 0x80;
+    /* SSPM FOSC/4_SSPxADD_I2C; CKP disabled; SSPEN disabled; SSPOV no_overflow; WCOL no_collision;  */
     SSP1CON1 = 0x8;
     /* SEN disabled; RSEN disabled; PEN disabled; RCEN disabled; ACKEN disabled; ACKDT acknowledge; GCEN disabled;  */
     SSP1CON2 = 0x0;
