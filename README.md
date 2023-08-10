@@ -140,7 +140,7 @@ The following figure shows the system configuration setting in MCC tool.
   <br>Figure 5: Clock Configuration<br>
 </p>
 
-## MSSP Configuration
+## I2C Configuration
 
 - Serial Protocol: I2C
 - Mode: Host
@@ -180,11 +180,3 @@ Pre-configured data streamer file is available with the firmware package. The be
 * Configure Terminal for visualizing the data values in real-time.
 
 **NOTE**: Refer [Data Visualizer](http://www.microchip.com/DS40001903) user guide for more information.
-
-## Pin Mapping
-<p align="center">
-  <img width=600 height=auto src="images/pin_config.png">
-  <br>Figure 8: Pin Configuration<br>
-</p>
-
-MFP is an output pin used for the alarm and square wave output functions. It can also serve as a general purpose output pin by controlling the OUT bit in the CONTROL register of the RTC 6 click. This pin may be left floating if not used.
