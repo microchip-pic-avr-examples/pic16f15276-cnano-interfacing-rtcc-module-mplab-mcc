@@ -60,7 +60,7 @@ Microchip’s free IDE, compiler and graphical code generators are used througho
 * [MPLAB^®^ X IDE](https://www.microchip.com/mplab/mplab-x-ide) v6.15.0 or newer
 * [XC8 Compiler](https://www.microchip.com/mplab/compilers) v2.41.0
 * [MPLAB Code Configurator (MCC)](https://www.microchip.com/mplab/mplab-code-configurator)  v5.3.7
-* [Microchip PIC16F1xxxx Series Device Support](https://packs.download.microchip.com/) 1.19.363 or newer
+* [Microchip PIC16F1xxxx Series Device Support](https://packs.download.microchip.com/) 1.20.366 or newer
 * EUSART MCC Melody Driver 7.1.4
 * I2C Host MCC Melody driver 1.0.4
 
